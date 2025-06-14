@@ -1,0 +1,10 @@
+# Ignore compiled files
+*.o
+*.exe
+
+# macOS or Linux specific
+.DS_Store
+
+# Ignore test outputs
+*.out
+*.log

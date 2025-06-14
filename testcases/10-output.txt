@@ -1,0 +1,61 @@
+FCFS
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     |  5  |  8  |  9  | 12  | 14  | 18  |-----|
+Turnaround |  5  |  7  |  7  |  9  | 10  | 13  | 8.50|
+NormTurn   | 1.00| 2.33| 7.00| 3.00| 5.00| 3.25| 3.60|
+
+
+RR-3
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     | 12  |  6  |  7  | 10  | 14  | 18  |-----|
+Turnaround | 12  |  5  |  5  |  7  | 10  | 13  | 8.67|
+NormTurn   | 2.40| 1.67| 5.00| 2.33| 5.00| 3.25| 3.27|
+
+
+SPN
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     |  5  | 11  |  6  | 14  |  8  | 18  |-----|
+Turnaround |  5  | 10  |  4  | 11  |  4  | 13  | 7.83|
+NormTurn   | 1.00| 3.33| 4.00| 3.67| 2.00| 3.25| 2.88|
+
+
+SRT
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     | 14  |  5  |  3  | 10  |  7  | 18  |-----|
+Turnaround | 14  |  4  |  1  |  7  |  3  | 13  | 7.00|
+NormTurn   | 2.80| 1.33| 1.00| 2.33| 1.50| 3.25| 2.04|
+
+
+HRRN
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     |  5  |  9  |  6  | 14  | 11  | 18  |-----|
+Turnaround |  5  |  8  |  4  | 11  |  7  | 13  | 8.00|
+NormTurn   | 1.00| 2.67| 4.00| 3.67| 3.50| 3.25| 3.01|
+
+
+FB-1
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     | 18  | 13  |  3  | 14  | 10  | 17  |-----|
+Turnaround | 18  | 12  |  1  | 11  |  6  | 12  |10.00|
+NormTurn   | 3.60| 4.00| 1.00| 3.67| 3.00| 3.00| 3.04|
+
+
+FB-2i
+Process    |  A  |  B  |  C  |  D  |  E  |  F  |
+Arrival    |  0  |  1  |  2  |  3  |  4  |  5  |
+Service    |  5  |  3  |  1  |  3  |  2  |  4  | Mean|
+Finish     | 17  | 10  |  3  | 12  | 13  | 18  |-----|
+Turnaround | 17  |  9  |  1  |  9  |  9  | 13  | 9.67|
+NormTurn   | 3.40| 3.00| 1.00| 3.00| 4.50| 3.25| 3.02|
