@@ -109,7 +109,7 @@ Schedulix/
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/Schedulix.git "CPU Scheduler"
+git clone https://github.com/SidRai-247/Schedulix.git "CPU Scheduler"
 cd "CPU Scheduler"
 ```
 
