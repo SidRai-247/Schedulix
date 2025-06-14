@@ -2,7 +2,7 @@
 
 [![C++](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/)
 [![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
-[![License](https://img.shields.io/badge/license-MIT-green.svg)]()
+<!-- [![License](https://img.shields.io/badge/license-MIT-green.svg)]() -->
 
 Schedulix is a modular and extensible C++ simulator for visualizing and analyzing classical CPU scheduling algorithms. This is not just a course project—it's a full-fledged **Operating Systems + DSA integration** that models real-world schedulers in a testable and traceable way.
 
@@ -252,7 +252,7 @@ Sample test cases are provided in the `testcases/` directory:
 
 
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - Operating Systems course materials and references
 - Classical CPU scheduling algorithm implementations
