@@ -88,7 +88,7 @@ int main()
 
     // //Pre-Processing the Input: Sorting in increasing oredr of arrival time, index
     vector<pair<int, int>> arrivalWithIndex;
-    for (int i = 0; i < processes.size(); ++i)
+    for (size_t i = 0; i < processes.size(); ++i)
     {
         arrivalWithIndex.push_back({get<1>(processes[i]), i}); // {arrivalTime, originalIndex}
     }
