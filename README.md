@@ -1,6 +1,10 @@
 # 🔧 Schedulix – Modular CPU Scheduling Simulator in C++
 
-Schedulix is a modular and extensible C++ simulator for visualizing and analyzing classical CPU scheduling algorithms. This is not just a course project—it’s a full-fledged **Operating Systems + DSA integration** that models real-world schedulers in a testable and traceable way.
+[![C++](https://img.shields.io/badge/C++-17-blue.svg)](https://isocpp.org/)
+[![Build](https://img.shields.io/badge/build-passing-brightgreen.svg)]()
+[![License](https://img.shields.io/badge/license-MIT-green.svg)]()
+
+Schedulix is a modular and extensible C++ simulator for visualizing and analyzing classical CPU scheduling algorithms. This is not just a course project—it's a full-fledged **Operating Systems + DSA integration** that models real-world schedulers in a testable and traceable way.
 
 ---
 
@@ -8,10 +12,10 @@ Schedulix is a modular and extensible C++ simulator for visualizing and analyzin
 
 In a multitasking operating system, **CPU scheduling** determines which process will be assigned to the CPU at any given time. Since the CPU can only execute one process at a time, scheduling policies aim to optimize key performance metrics such as:
 
-- Turnaround time
-- Waiting time
-- CPU utilization
-- Fairness and response time
+- **Turnaround time** - Total time from arrival to completion
+- **Waiting time** - Time spent waiting in ready queue
+- **CPU utilization** - Percentage of time CPU is busy
+- **Fairness and response time** - Equal treatment and quick responsiveness
 
 This simulator implements some of the most important CPU scheduling algorithms, both **preemptive** and **non-preemptive**, and provides trace-level output for understanding each decision made by the scheduler.
 
@@ -20,189 +24,241 @@ This simulator implements some of the most important CPU scheduling algorithms, 
 ## 📘 Implemented Algorithms
 
 ### 1. First Come First Serve (FCFS)
-- Non-preemptive
-- Processes are served in the order they arrive.
-- Easy to implement but suffers from convoy effect.
+- **Type:** Non-preemptive
+- **Description:** Processes are served in the order they arrive
+- **Pros:** Simple to implement
+- **Cons:** Suffers from convoy effect
 
 ### 2. Round Robin (RR)
-- Preemptive
-- Each process gets a fixed time slice (quantum).
-- Good for time-sharing systems and fairness.
+- **Type:** Preemptive
+- **Description:** Each process gets a fixed time slice (quantum)
+- **Pros:** Good for time-sharing systems and fairness
+- **Cons:** Performance depends on quantum size
 
 ### 3. Shortest Process Next (SPN)
-- Non-preemptive
-- Picks the job with the smallest service time.
-- Minimizes average waiting time but can cause starvation.
+- **Type:** Non-preemptive
+- **Description:** Picks the job with the smallest service time
+- **Pros:** Minimizes average waiting time
+- **Cons:** Can cause starvation of long processes
 
 ### 4. Shortest Remaining Time (SRT)
-- Preemptive version of SPN.
-- At every unit, chooses process with least remaining burst time.
-- Highly responsive but complex to implement.
+- **Type:** Preemptive (preemptive version of SPN)
+- **Description:** At every unit, chooses process with least remaining burst time
+- **Pros:** Highly responsive
+- **Cons:** Complex to implement, high overhead
 
 ### 5. Highest Response Ratio Next (HRRN)
-- Non-preemptive
-- Prioritizes based on: `(waiting time + service time) / service time`
-- Balances fairness and efficiency, avoids starvation.
+- **Type:** Non-preemptive
+- **Description:** Prioritizes based on: `(waiting time + service time) / service time`
+- **Pros:** Balances fairness and efficiency, avoids starvation
+- **Cons:** Requires calculation of response ratios
 
-### 6. Feedback with fixed quantum (FB-1)
-- Preemptive
-- Multilevel feedback queue, each queue with q = 1
-- Long jobs slowly demoted to lower queues
+### 6. Feedback with Fixed Quantum (FB-1)
+- **Type:** Preemptive
+- **Description:** Multilevel feedback queue, each queue with quantum = 1
+- **Pros:** Adaptive to job characteristics
+- **Cons:** Long jobs slowly demoted to lower queues
 
-### 7. Feedback with increasing quantum (FB-2i)
-- Preemptive
-- Queue `i` has quantum `2^i`, adapting to job length
-- Better for balancing short and long jobs
+### 7. Feedback with Increasing Quantum (FB-2i)
+- **Type:** Preemptive
+- **Description:** Queue `i` has quantum `2^i`, adapting to job length
+- **Pros:** Better for balancing short and long jobs
+- **Cons:** Complex queue management
 
 ### 8. Aging
-- Preemptive
-- Priority-based scheduling with aging to avoid starvation
-- Each ready process gains priority over time
+- **Type:** Preemptive
+- **Description:** Priority-based scheduling with aging to avoid starvation
+- **Pros:** Each ready process gains priority over time
+- **Cons:** Overhead of priority updates
 
 ---
 
 ## 🛠️ Project Structure
+
+```
 Schedulix/
 │
-├── main.cpp # Driver file
-├── parser.h # Parses input and builds process structures
-├── utils.h # Helper functions and constants
-├── print.h # Output formatting for trace/statistics
-├── fcfs.h # FCFS algorithm
-├── rr.h # Round Robin algorithm
-├── spn.h # Shortest Process Next
-├── srt.h # Shortest Remaining Time
-├── hrrn.h # Highest Response Ratio Next
-├── fb1.h # Feedback with q=1
-├── fb2i.h # Feedback with q=2^i
-├── aging.h # Aging-based scheduler
-├── Makefile # Easy build automation
-└── testcases/ # Sample input/output test files
-├── input1.txt
-├── output1.txt
-
-# Schedulix CPU Scheduler: Getting Started
-
-This guide will walk you through cloning, building, and running the Schedulix CPU Scheduler simulator.
+├── main.cpp          # Driver file
+├── parser.h          # Parses input and builds process structures
+├── utils.h           # Helper functions and constants
+├── print.h           # Output formatting for trace/statistics
+├── fcfs.h            # FCFS algorithm
+├── rr.h              # Round Robin algorithm
+├── spn.h             # Shortest Process Next
+├── srt.h             # Shortest Remaining Time
+├── hrrn.h            # Highest Response Ratio Next
+├── fb1.h             # Feedback with q=1
+├── fb2i.h            # Feedback with q=2^i
+├── aging.h           # Aging-based scheduler
+├── Makefile          # Easy build automation
+└── testcases/        # Sample input/output test files
+    ├── input1.txt
+    └── output1.txt
+```
 
 ---
 
-## 1. Clone the Repository
+## 🚀 Getting Started
 
-First, clone the Schedulix repository into a folder named "CPU Scheduler" and navigate into the directory.
+### Prerequisites
+
+- **C++ Compiler:** g++ with C++17 support
+- **Build System:** make
+- **Operating System:** Linux, macOS, or Windows (with WSL/MinGW)
+
+### 1. Clone the Repository
 
 ```bash
-git clone [https://github.com/your-username/Schedulix.git](https://github.com/your-username/Schedulix.git) "CPU Scheduler"
+git clone https://github.com/your-username/Schedulix.git "CPU Scheduler"
 cd "CPU Scheduler"
+```
 
-## 2. Build the Project
-
-Ensure you have g++ (with C++17 support) and make installed on your system. Then, build the project using make.
+### 2. Build the Project
 
 ```bash
 make
+```
 
-## 3. Run the Simulator
-
-You can run the simulator with various test cases. Here's an example of running it in trace mode with the first test case and saving the output to a file.
+### 3. Run the Simulator
 
 ```bash
 ./schedulix
+```
 
-## 4. Clean Up
+The program will wait for input from stdin. You can also redirect input from a file:
 
-When you're finished, you can remove the executable files using make clean.
+```bash
+./schedulix < testcases/input1.txt
+```
+
+Or save output to a file:
+
+```bash
+./schedulix < testcases/input1.txt > output.txt
+```
+
+### 4. Clean Up
 
 ```bash
 make clean
+```
+
+---
 
 ## 📝 Input & Output Format
 
-This simulator accepts input through standard input or from an input file. The input describes the simulation mode, algorithms to apply, time constraints, and process details. Below is a structured breakdown of the expected format:
-
 ### 📥 Input Format
 
-The input must follow **exactly this structure**, in **multiple lines**:
+The input must follow this **exact structure** with **multiple lines**:
 
-1. **Line 1:**  
-   A keyword that specifies the output mode:  
-   - `"trace"` → Show timeline simulation of process execution.  
-   - `"stats"` → Show statistics such as turnaround and waiting times.
+#### Line 1: Output Mode
+A keyword that specifies the output mode:
+- `trace` → Show timeline simulation of process execution
+- `stats` → Show statistics such as turnaround and waiting times
 
-2. **Line 2:**  
-   A comma-separated list of scheduling policies you want to simulate.  
-   Each policy is represented by a number, optionally followed by a parameter (like time quantum `q`), separated by a hyphen.
+#### Line 2: Scheduling Algorithms
+A comma-separated list of scheduling policies to simulate. Each policy is represented by a number, optionally followed by a parameter (like time quantum `q`), separated by a hyphen.
 
-   **Supported Algorithms:**
+| Number | Algorithm | Type | Parameter |
+|--------|-----------|------|-----------|
+| `1` | FCFS (First Come First Serve) | Non-preemptive | None |
+| `2-q` | RR (Round Robin) | Preemptive | `q` = time quantum |
+| `3` | SPN (Shortest Process Next) | Non-preemptive | None |
+| `4` | SRT (Shortest Remaining Time) | Preemptive | None |
+| `5` | HRRN (Highest Response Ratio Next) | Non-preemptive | None |
+| `6` | FB-1 (Feedback with fixed q = 1) | Multi-level, preemptive | None |
+| `7` | FB-2i (Feedback with exponential q) | Multi-level, preemptive | None |
+| `8-q` | Aging (priority aging) | Preemptive | `q` = aging interval |
 
-   | Number | Algorithm                                  | Notes                                 |
-   |--------|--------------------------------------------|----------------------------------------|
-   | 1      | FCFS (First Come First Serve)              | Non-preemptive                         |
-   | 2-q    | RR (Round Robin with quantum q)            | Preemptive                             |
-   | 3      | SPN (Shortest Process Next)                | Non-preemptive                         |
-   | 4      | SRT (Shortest Remaining Time)              | Preemptive                             |
-   | 5      | HRRN (Highest Response Ratio Next)         | Non-preemptive                         |
-   | 6      | FB-1 (Feedback with fixed q = 1)           | Multi-level, preemptive                |
-   | 7      | FB-2i (Feedback with exponentially increasing q) | Multi-level, preemptive         |
-   | 8-q    | Aging (priority aging with interval q)     | Non-preemptive                         |
+**Example:** `1,2-4,5,8-1` means simulate FCFS, Round Robin (q=4), HRRN, and Aging (q=1).
 
-   Example:  
-   1,2-4,5,8-1
+#### Line 3: Simulation Time
+An integer representing the total simulation time (timeline's end point).
 
-This means simulate FCFS, Round Robin (q = 4), HRRN, and Aging (q = 1).
-
-3. **Line 3:**  
-An integer representing the total simulation time (timeline’s end point).
-
-4. **Line 4:**  
+#### Line 4: Number of Processes
 An integer specifying the number of processes.
 
-5. **Lines 5 and onward:**  
-Each line contains process data in a comma-separated format.
+#### Lines 5+: Process Data
+Each line contains process data in comma-separated format:
 
-- For algorithms 1–7 (non-aging algorithms):
-  ```
-  <ProcessName>,<ArrivalTime>,<ServiceTime>
-  ```
+**For algorithms 1-7 (non-aging):**
+```
+<ProcessName>,<ArrivalTime>,<ServiceTime>
+```
 
-- For algorithm 8 (Aging):
-  ```
-  <ProcessName>,<ArrivalTime>,<Priority>
-  ```
+**For algorithm 8 (Aging):**
+```
+<ProcessName>,<ArrivalTime>,<Priority>
+```
 
-Example (for FCFS):
+### 📤 Output Format
+
+**Trace Mode (`trace`):**
+- Visual timeline representation of process scheduling
+- Shows which process runs at each time unit
+- Separate timeline for each algorithm
+
+**Statistics Mode (`stats`):**
+- Detailed performance metrics per algorithm:
+  - **Turnaround Time:** Completion time - Arrival time
+  - **Waiting Time:** Turnaround time - Service time
+  - **Normalized Turnaround Time:** Turnaround time / Service time
+  - **Average Metrics:** Mean values across all processes
+
+---
+
+## 📋 Example Usage
+
+### Example 1: Trace Mode
+
+**Input:**
+```
 trace
-1
-20
-3
-P1,0,5
+1,2-3
+10
+2
+P1,0,4
 P2,2,3
-P3,4,4
+```
 
+**Output:** Timeline showing FCFS and Round Robin (q=3) execution.
+
+### Example 2: Statistics Mode
+
+**Input:**
+```
 stats
 8-1
 25
 2
 P1,0,3
 P2,5,5
+```
+
+**Output:** Performance statistics for Aging algorithm with interval 1.
+
+---
+
+## 🧪 Testing
+
+Sample test cases are provided in the `testcases/` directory:
+
+```bash
+# Run a specific test case
+./schedulix
+```
+
+---
 
 
-**Note:**  
-Processes should be listed in ascending order of arrival time. If two processes arrive at the same time, the one with lower priority (in case of Aging) or as they appear in the list (for others) is assumed to arrive first. If not the input will be sorted in increasing order of arrival time and in case of a tie, the one with lower index will be plced before(assuming higgher priority)
 
-### 📤 Output Format
+## 🙏 Acknowledgments
 
-The output varies based on the mode selected:
+- Operating Systems course materials and references
+- Classical CPU scheduling algorithm implementations
+- C++ STL for efficient data structures
 
-- In `"trace"` mode:  
-A visual representation (timeline) of how each process is scheduled over time, per algorithm.
+---
 
-- In `"stats"` mode:  
-Detailed statistics per algorithm including:
-- Turnaround time
-- Waiting time
-- Normalized turnaround time
-- Average metrics for all processes
 
-> For reference, sample input/output files are available in the `testcases/` directory. You can use them directly or create your own following the same structure.
-
+**Happy Scheduling! 🎯**
