@@ -116,7 +116,7 @@ cd "CPU Scheduler"
 ### 2. Build the Project
 
 ```bash
-g++ -std=c++17 -Wall main.cpp -o scheduler
+g++ -std=c++17 -Wall main.cpp -o schedulix
 ```
 
 ### 3. Run the Simulator
