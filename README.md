@@ -116,7 +116,7 @@ cd "CPU Scheduler"
 ### 2. Build the Project
 
 ```bash
-make
+g++ -std=c++17 -Wall main.cpp -o scheduler
 ```
 
 ### 3. Run the Simulator
@@ -137,11 +137,6 @@ Or save output to a file:
 ./schedulix < testcases/input1.txt > output.txt
 ```
 
-### 4. Clean Up
-
-```bash
-make clean
-```
 
 ---
 
